@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.mapper.origin.OriginMapper">
+    <insert id="insertSchoolRoll" parameterType="com.feng.bean.SchoolRoll">
+        replace into schoolroll(sno,name,sex,professionid,password,auth) values(#{Sno},#{Name},#{Sex},#{ProfessionId},#{Password},#{Auth});
+    </insert>
+    <insert id="insertProfession" parameterType="com.feng.bean.Profession">
+        replace into profession(pno,name) values(#{Pno},#{Name});
+    </insert>
+    <insert id="insertCourse" parameterType="com.feng.bean.Course">
+        replace into course(cno,name) values(#{Cno},#{Name});
+    </insert>
+    <insert id="insertCourseScore" parameterType="com.feng.bean.CourseScore">
+        replace into coursescore(studentid,courseid,score) values(#{StudentId},#{CourseId},#{Score});
+    </insert>
+</mapper>
