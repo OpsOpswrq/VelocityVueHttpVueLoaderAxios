@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Main</title>
+    #include("/CommonInclude.html")
+</head>
+<body>
+    <div id="App">
+        <app></app>
+    </div>
+<script>
+    window.Vue.use(httpVueLoader);
+    let vm = new Vue({
+        el: "#App",
+        //手动挂载组件
+        components: {
+            'app': 'url:/F102/App.vue',
+        }
+    })
+</script>
+</body>
+</html>
