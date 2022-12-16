@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class Course {
     private String Cno;
     private String Name;
+    private int Version;
 }

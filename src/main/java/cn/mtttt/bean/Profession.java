@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class Profession {
     private String Pno;
     private String Name;
+    private int Version;
 }

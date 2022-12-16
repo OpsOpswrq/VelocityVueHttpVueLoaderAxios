@@ -13,28 +13,28 @@ import java.util.ArrayList;
 @Mapper
 public interface LatterMapper {
 
-    @Select("select * from latter.schoolroll limit #{start},100;")
+    @Select("select * from schoolroll limit #{start},100;")
     ArrayList<SchoolRoll> getSchoolRollOffsetLatter100(int start);
-    @Select("select * from latter.schoolroll;")
+    @Select("select * from schoolroll;")
     ArrayList<SchoolRoll> getSchoolRollOffsetLatter();
-    @Select("select * from latter.course limit #{start},100;")
+    @Select("select * from course limit #{start},100;")
     ArrayList<Course> getCourseOffsetLatter(int start);
-    @Select("select * from latter.course;")
+    @Select("select * from course;")
     ArrayList<Course> getCourseOffsetLatterFull();
-    @Select("select * from latter.profession limit #{start},100;")
+    @Select("select * from profession limit #{start},100;")
     ArrayList<Profession> getProfessionOffsetLatter(int start);
-    @Select("select * from latter.profession;")
+    @Select("select * from profession;")
     ArrayList<Profession> getProfessionOffsetLatterFull();
-    @Insert("replace into latter.schoolroll(sno,name,sex,professionid,password,auth) values(#{Sno},#{Name},#{Sex},#{ProfessionId},#{Password},#{Auth});")
+    @Insert("replace into schoolroll(sno,name,sex,professionid,password,auth,version) values(#{Sno},#{Name},#{Sex},#{ProfessionId},#{Password},#{Auth},#{Version});")
     void updateSchoolRollLatter(SchoolRoll schoolRoll);
-    @Insert("replace into latter.profession(pno,name) values(#{Pno},#{Name});")
+    @Insert("replace into profession(pno,name,version) values(#{Pno},#{Name},#{Version});")
     void updateProfessionLatter(Profession profession);
-    @Insert("replace into latter.course(cno,name) values(#{Cno},#{Name});")
+    @Insert("replace into course(cno,name,version) values(#{Cno},#{Name},#{Version});")
     void updateCourseLatter(Course course);
-    @Select("select * from latter.coursescore limit #{start},100;")
+    @Select("select * from coursescore limit #{start},100;")
     ArrayList<CourseScore> getCourseScoreLatter100(int start);
-    @Select("select * from latter.coursescore;")
+    @Select("select * from coursescore;")
     ArrayList<CourseScore> getCourseScoreLatterFull();
-    @Insert("replace into latter.coursescore(studentid,courseid,score) values(#{StudentId},#{CourseId},#{Score});")
+    @Insert("replace into coursescore(studentid,courseid,score,version) values(#{StudentId},#{CourseId},#{Score},#{Version});")
     void updateCourseScoreLatter(CourseScore courseScore);
 }

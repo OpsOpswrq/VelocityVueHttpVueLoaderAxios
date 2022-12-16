@@ -1,0 +1,34 @@
+成绩表    课程表   专业表   学籍表
+数据进行脱敏 表之间的关联 登录界面 权限处理 前端Vue 后端SpringBoot+Mybatis+SpringSecuity
+
+
+create table profession(
+	`pno` varchar(255) primary key,
+	`name` varchar(255) default ""，
+	`version` int default 0
+)charset='utf8';
+
+create table course(
+	`cno` varchar(255) primary key,
+	`name` varchar(255) default "",
+	`version` int default 0
+)charset='utf8';
+
+
+create table coursescore(
+	`studentid` varchar(255),
+	`courseid` varchar(255),
+	`score` float,
+	primary key(`studentid`,`courseid`),
+	`version` int default 0
+)charset='utf8';
+
+create table schoolroll(
+	`sno` varchar(255) primary key,
+	`name` varchar(255) default "",
+	`sex` varchar(255) default "",
+	`professionid` varchar(255),
+	`password` varchar(255) default "",
+	`auth` int default 1,
+	`version` int default 0
+)charset='utf8';

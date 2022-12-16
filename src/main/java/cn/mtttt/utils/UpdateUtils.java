@@ -30,6 +30,7 @@ public class UpdateUtils<T> {
                 schoolRoll.setName(encryptor.encrypt(schoolRoll.getName()));
                 schoolRoll.setProfessionId(encryptor.encrypt(schoolRoll.getProfessionId()));
                 schoolRoll.setSex(encryptor.encrypt(schoolRoll.getSex()));
+                schoolRoll.setVersion(schoolRoll.getVersion()+1);
                 objects.set(i, (T) schoolRoll);
             }
         }else if(objects.get(0).getClass().equals(Course.class)){
@@ -38,6 +39,7 @@ public class UpdateUtils<T> {
                 Course course = (Course) objects.get(i);
                 course.setName(encryptor.encrypt(course.getName()));
                 course.setCno(encryptor.encrypt(course.getCno()));
+                course.setVersion(course.getVersion()+1);
                 objects.set(i, (T) course);
             }
         }else if(objects.get(0).getClass().equals(Profession.class)){
@@ -46,6 +48,7 @@ public class UpdateUtils<T> {
                 Profession profession = (Profession) objects.get(i);
                 profession.setName(encryptor.encrypt(profession.getName()));
                 profession.setPno(encryptor.encrypt(profession.getPno()));
+                profession.setVersion(profession.getVersion()+1);
                 objects.set(i, (T) profession);
             }
         }else if(objects.get(0).getClass().equals(CourseScore.class)){
@@ -54,6 +57,7 @@ public class UpdateUtils<T> {
                 CourseScore courseScore = (CourseScore) objects.get(i);
                 courseScore.setCourseId(encryptor.encrypt(courseScore.getCourseId()));
                 courseScore.setStudentId(encryptor.encrypt(courseScore.getStudentId()));
+                courseScore.setVersion(courseScore.getVersion()+1);
                 objects.set(i, (T) courseScore);
             }
         }

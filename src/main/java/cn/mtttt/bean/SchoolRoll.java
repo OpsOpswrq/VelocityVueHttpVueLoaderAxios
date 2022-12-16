@@ -14,4 +14,5 @@ public class SchoolRoll {
     private String ProfessionId;
     private String Password;
     private int Auth;
+    private int Version;
 }

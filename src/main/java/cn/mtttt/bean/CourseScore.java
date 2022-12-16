@@ -11,4 +11,5 @@ public class CourseScore {
     private String StudentId;
     private String CourseId;
     private double Score;
+    private int Version;
 }

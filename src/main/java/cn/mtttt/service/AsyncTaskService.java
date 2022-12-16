@@ -23,9 +23,15 @@ public class AsyncTaskService {
         UpdateUtils<SchoolRoll> updateUtils = new UpdateUtils<SchoolRoll>();
         ArrayList<SchoolRoll> schoolRollOffsetOrigin = originService.getSchoolRollOffsetOrigin(i * 1000);
         if(schoolRollOffsetOrigin.size() > 0){
+            int version_pre = schoolRollOffsetOrigin.get(0).getVersion();
             ArrayList<SchoolRoll> arrayList = updateUtils.handle(schoolRollOffsetOrigin);
-            for (Object object : arrayList) {
-                latterService.updateSchoolRollLatter((SchoolRoll) object);
+            int version_post = arrayList.get(0).getVersion();
+            if(version_pre == version_post - 1){
+                for (Object object : arrayList) {
+                    latterService.updateSchoolRollLatter((SchoolRoll) object);
+                }
+            }else{
+                throw new RuntimeException("数据已经被操作过了，无法更新数据");
             }
         }
     }
@@ -35,9 +41,15 @@ public class AsyncTaskService {
         UpdateUtils<Profession> updateUtils = new UpdateUtils<Profession>();
         ArrayList<Profession> professionOffsetOrigin = originService.getProfessionOffsetOrigin(i * 100);
         if(professionOffsetOrigin.size() > 0){
+            int version_pre = professionOffsetOrigin.get(0).getVersion();
             ArrayList<Profession> arrayList = updateUtils.handle(professionOffsetOrigin);
-            for (Object object : arrayList) {
-                latterService.updateProfessionLatter((Profession) object);
+            int version_post = arrayList.get(0).getVersion();
+            if(version_post - 1 == version_pre){
+                for (Object object : arrayList) {
+                    latterService.updateProfessionLatter((Profession) object);
+                }
+            }else{
+                throw new RuntimeException("数据已经被操作过了，无法更新数据");
             }
         }
     }
@@ -47,9 +59,15 @@ public class AsyncTaskService {
         UpdateUtils<Course> updateUtils = new UpdateUtils<Course>();
         ArrayList<Course> courseOffsetOrigin = originService.getCourseOffsetOrigin(i * 100);
         if(courseOffsetOrigin.size() > 0){
+            int version_pre = courseOffsetOrigin.get(0).getVersion();
             ArrayList<Course> arrayList = updateUtils.handle(courseOffsetOrigin);
-            for (Object object : arrayList) {
-                latterService.updateCourseLatter((Course) object);
+            int version_post = arrayList.get(0).getVersion();
+            if(version_post - 1 == version_pre){
+                for (Object object : arrayList) {
+                    latterService.updateCourseLatter((Course) object);
+                }
+            }else{
+                throw new RuntimeException("数据已经被操作过了，无法更新数据");
             }
         }
     }
@@ -59,9 +77,15 @@ public class AsyncTaskService {
         UpdateUtils<CourseScore> updateUtils = new UpdateUtils<CourseScore>();
         ArrayList<CourseScore> courseScoreOrigin = originService.getCourseScoreOrigin(i * 2000);
         if(courseScoreOrigin.size() > 0){
+            int version_pre = courseScoreOrigin.get(0).getVersion();
             ArrayList<CourseScore> arrayList = updateUtils.handle(courseScoreOrigin);
-            for (CourseScore object : arrayList) {
-                latterService.updateCourseScoreLatter(object);
+            int version_post = arrayList.get(0).getVersion();
+            if(version_post - 1 == version_pre){
+                for (CourseScore object : arrayList) {
+                    latterService.updateCourseScoreLatter(object);
+                }
+            }else{
+                throw new RuntimeException("数据已经被操作过了，无法更新数据");
             }
         }
     }
